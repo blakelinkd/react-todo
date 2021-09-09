@@ -1,10 +1,9 @@
 import Modal from "./Modal";
-import Backdrop from "./Backdrop";
 import { useState } from "react";
 
 const Todo = (props) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const deleteHandler = () => {
+  const openModal = () => {
     setModalOpen(true);
   };
   const closeModal = () => {
@@ -20,7 +19,7 @@ const Todo = (props) => {
       <h5 className="card-title">{props.title}</h5>
       <p className="card-text">{props.description}</p>
       <div className="actions">
-        <button href="/" className="btn btn-primary" onClick={deleteHandler}>
+        <button href="/" className="btn btn-primary" onClick={openModal}>
           Complete
         </button>
       </div>
