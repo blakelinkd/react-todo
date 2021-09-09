@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# React Todo-App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can see a demo of this app at [https://blakedlink.netlify.app/]
 
 ## Available Scripts
 
