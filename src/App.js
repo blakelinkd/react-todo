@@ -7,8 +7,14 @@ function App() {
       <Todo
         title="Take a Bubble Bath"
         description="Put dish soap in the water"
+
+        // onClick={taskClicked}
       />
-      <Todo title="Think about Grandma" description="she was nice." />
+      <Todo
+        title="Think about Grandma"
+        description="she was nice."
+        // onClick={taskClicked}
+      />
     </div>
   );
 }
