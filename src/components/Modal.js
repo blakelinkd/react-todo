@@ -25,7 +25,9 @@ const Modal = (props) => {
               style={{ marginLeft: "40px" }}
               data-dismiss="modal"
               aria-label="Close"
-              onClick={props.onClick}
+              onClick={props.onDelete}
+              //onClick={props.onClick}
+              //onDelete={props.onDelete}
             >
               <span aria-hidden="true">Confirm</span>
             </button>

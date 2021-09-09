@@ -24,7 +24,7 @@ const Todo = (props) => {
         </button>
       </div>
 
-      {isModalOpen && <Modal onClick={closeModal} />}
+      {isModalOpen && <Modal onClick={closeModal} onDelete={props.onDelete} />}
     </div>
   );
 };
