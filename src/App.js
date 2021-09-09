@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>My Todos</h1>
+      <div clasName="border-success" style={{ width: "18rem" }}>
+        <div className="card-body bg-info rounded">
+          <h5 className="card-title">Task Title</h5>
+          <p className="card-text">Explain what the task is.</p>
+          <div className="actions">
+            <a href="/" className="btn btn-primary">
+              Complete
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
