@@ -6,9 +6,10 @@ const Todo = (props) => {
   const openModal = () => {
     setModalOpen(true);
   };
-  const closeModal = () => {
+  const closeModal = (id) => {
     setModalOpen(false);
-    console.debug("clicked");
+    //props.onDelete(props.id);
+    console.debug("close model on: " + id);
   };
 
   return (
@@ -23,8 +24,16 @@ const Todo = (props) => {
           Complete
         </button>
       </div>
+      {/* <Modal onClick={closeModal} onDelete={props.onDelete} id={props.id} /> */}
 
-      {isModalOpen && <Modal onClick={closeModal} onDelete={props.onDelete} />}
+      {isModalOpen && (
+        <Modal
+          onClick={closeModal}
+          onDelete={props.onDelete}
+          id={props.id}
+          show={props.show}
+        />
+      )}
     </div>
   );
 };

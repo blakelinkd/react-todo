@@ -1,37 +1,42 @@
 import Todo from "./components/Todo";
 import { useState } from "react";
-
 function App() {
+  const tasks = [
+    {
+      id: 1,
+      title: "hello world",
+      description: "I like to fart",
+      incomplete: true,
+    },
+    {
+      id: 2,
+      title: "make dinner",
+      description: "mac n cheese",
+      incomplete: true,
+    },
+  ];
+
+  const [todoItems, setTodoItems] = useState(tasks);
+
   const [isDeleted, setIsDeleted] = useState(false);
-  const handleDeleteTask = () => {
-    setIsDeleted(true);
+  const handleDeleteTask = (id) => {
+    console.log("delete clicked" + " on " + id);
+    setTodoItems(todoItems.filter((task) => task.id !== id));
   };
   return (
     <div>
       <h1>My Todos</h1>
-
-      {!isDeleted && (
-        <Todo
-          title="i can haz delete"
-          description="delete me if you dare"
-          onDelete={handleDeleteTask}
-        />
+      {todoItems.map(
+        (task) =>
+          task.incomplete && (
+            <Todo
+              id={task.id}
+              title={task.title}
+              description={task.description}
+              onDelete={handleDeleteTask}
+            />
+          )
       )}
-
-      <Todo
-        title="Take a Bubble Bath"
-        description="Put dish soap in the water"
-        onDelete={handleDeleteTask}
-        // onClick={taskClicked}
-      />
-      <Todo
-        someValue="shark"
-        title="Think about Grandma"
-        description="she was nice."
-        onDelete={handleDeleteTask}
-
-        // onClick={taskClicked}
-      />
     </div>
   );
 }

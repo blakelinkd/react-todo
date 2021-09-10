@@ -1,6 +1,6 @@
 const Modal = (props) => {
   return (
-    <div tabIndex="-1" role="dialog">
+    <div tabIndex="-1" role="dialog" show={props.show}>
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
@@ -19,15 +19,17 @@ const Modal = (props) => {
             >
               <span aria-hidden="true">Cancle</span>
             </button>
+
             <button
               className="btn btn-warning"
               type="button"
               style={{ marginLeft: "40px" }}
               data-dismiss="modal"
               aria-label="Close"
-              onClick={props.onDelete}
-              //onClick={props.onClick}
-              //onDelete={props.onDelete}
+              onClick={() => {
+                props.onClick();
+                props.onDelete(props.id);
+              }}
             >
               <span aria-hidden="true">Confirm</span>
             </button>
