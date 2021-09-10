@@ -13,19 +13,24 @@ const Todo = (props) => {
   };
 
   return (
-    <div
-      className="card-body bg-info rounded border-success"
-      style={{ width: "18rem", marginBottom: "18px" }}
-    >
-      <h5 className="card-title">{props.title}</h5>
-      <p className="card-text">{props.description}</p>
-      <div className="actions">
-        <button href="/" className="btn btn-primary" onClick={openModal}>
-          Complete
-        </button>
-      </div>
-      {/* <Modal onClick={closeModal} onDelete={props.onDelete} id={props.id} /> */}
-
+    // <div
+    //   className="card-body bg-info rounded border-success"
+    //   style={{ width: "18rem", marginBottom: "18px" }}
+    // >
+    //   <h5 className="card-title">{props.title}</h5>
+    //   <p className="card-text">{props.description}</p>
+    //   <div className="actions">
+    //     <button href="/" className="btn btn-primary" onClick={openModal}>
+    //       Complete
+    //     </button>
+    //   </div>
+    <div>
+      <li
+        className="list-group-item list-group-item-info lead"
+        onClick={openModal}
+      >
+        {props.title}
+      </li>
       {isModalOpen && (
         <Modal
           onClick={closeModal}
