@@ -5,48 +5,26 @@ function App() {
   const tasks = [
     {
       id: 1,
-      title: "hello world",
+      title: "Click on me!",
       description: "I like to fart",
-      incomplete: true,
-    },
-    {
-      id: 2,
-      title: "make dinner",
-      description: "mac n cheese",
       incomplete: true,
     },
   ];
 
   const [todoItems, setTodoItems] = useState(tasks);
-  const onSubmit = (e) => {
-    // tasks = {
-    //   ...tasks,
-    //   id: tasks.length + 1,
-    //   title: e.text,
-    //   description: "smell the farts",
-    //   incomplete: true,
-    // };
-
-    // setTodoItems(...tasks, {
-    //   id: tasks.length + 1,
-    //   title: e.text,
-    //   description: e.text,
-    //   incpomplete: true,
-    // });
-
-    console.debug(tasks);
-  };
   const [text, setText] = useState("");
-  const [isDeleted, setIsDeleted] = useState(false);
+
   const handleDeleteTask = (id) => {
-    console.log("delete clicked" + " on " + id);
     setTodoItems(todoItems.filter((task) => task.id !== id));
+    console.log("handleDelete called");
   };
+
   return (
     <div className="container">
       <div className="row justify-content-md-center">
         <h1 className="display-3">Tasks</h1>
         <ul className="list-group">
+          {/* Only list items that are flagged incomplete */}
           {todoItems.map(
             (task) =>
               task.incomplete && (
@@ -59,6 +37,7 @@ function App() {
               )
           )}
         </ul>
+        {console.log(todoItems)}
 
         <form
           onSubmit={(e) => {
@@ -66,7 +45,7 @@ function App() {
             setTodoItems([
               ...todoItems,
               {
-                id: tasks.length + 1,
+                id: todoItems.length + 1,
                 title: text,
                 description: text,
                 incomplete: true,
@@ -84,7 +63,7 @@ function App() {
                   setTodoItems([
                     ...todoItems,
                     {
-                      id: tasks.length + 1,
+                      id: todoItems.length + 1,
                       title: text,
                       description: text,
                       incomplete: true,

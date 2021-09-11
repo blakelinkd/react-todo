@@ -1,29 +1,25 @@
-import Modal from "./Modal";
 import { useState } from "react";
-
+import Modal from "react-bootstrap/Modal";
 const Todo = (props) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => {
+    console.log("open model clicked");
     setModalOpen(true);
   };
   const closeModal = (id) => {
     setModalOpen(false);
-    //props.onDelete(props.id);
     console.debug("close model on: " + id);
+  };
+  const onExit = () => {
+    setModalOpen(false);
+  };
+  const onDelete = () => {
+    props.onDelete(props.id);
+    setModalOpen(false);
+    console.debug("close model on: " + props.id);
   };
 
   return (
-    // <div
-    //   className="card-body bg-info rounded border-success"
-    //   style={{ width: "18rem", marginBottom: "18px" }}
-    // >
-    //   <h5 className="card-title">{props.title}</h5>
-    //   <p className="card-text">{props.description}</p>
-    //   <div className="actions">
-    //     <button href="/" className="btn btn-primary" onClick={openModal}>
-    //       Complete
-    //     </button>
-    //   </div>
     <div>
       <li
         className="list-group-item list-group-item-info lead"
@@ -31,13 +27,42 @@ const Todo = (props) => {
       >
         {props.title}
       </li>
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <Modal
           onClick={closeModal}
           onDelete={props.onDelete}
           id={props.id}
           show={props.show}
         />
+      )} */}
+
+      {isModalOpen && (
+        <Modal show={isModalOpen} onHide={onExit}>
+          <Modal.Header>{props.title}</Modal.Header>
+          <Modal.Body>{props.description}</Modal.Body>
+          <Modal.Footer>
+            <button
+              onClick={closeModal}
+              className="btn btn-danger"
+              style={{ marginRight: "auto" }}
+            >
+              Cancle
+            </button>
+
+            <button
+              // onClick={() => {
+              //   closeModal();
+              //   //props.onDelete(props.id);
+              //   //console.log("delete from modal: " + props.id);
+              // }}
+              onClick={onDelete}
+              className="btn btn-warning"
+              style={{ marginLeft: "auto" }}
+            >
+              Complete
+            </button>
+          </Modal.Footer>
+        </Modal>
       )}
     </div>
   );
