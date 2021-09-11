@@ -2,6 +2,10 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 const Todo = (props) => {
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const setDescription = (arg) => {
+    props.setDescription(arg);
+  };
   const openModal = () => {
     console.log("open model clicked");
     setModalOpen(true);
@@ -18,6 +22,7 @@ const Todo = (props) => {
     setModalOpen(false);
     console.debug("close model on: " + props.id);
   };
+  const [text, setText] = useState("");
 
   return (
     <div>
@@ -27,19 +32,27 @@ const Todo = (props) => {
       >
         {props.title}
       </li>
-      {/* {isModalOpen && (
-        <Modal
-          onClick={closeModal}
-          onDelete={props.onDelete}
-          id={props.id}
-          show={props.show}
-        />
-      )} */}
 
       {isModalOpen && (
         <Modal show={isModalOpen} onHide={onExit}>
-          <Modal.Header>{props.title}</Modal.Header>
-          <Modal.Body>{props.description}</Modal.Body>
+          <Modal.Header>
+            <h4>{props.title}</h4>
+          </Modal.Header>
+          <Modal.Body>
+            {props.description === "" ? (
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Today I need to..."
+                aria-label=""
+                aria-describedby="basic-addon1"
+                onChange={(e) => setText(e.target.value)}
+                value={text}
+              />
+            ) : (
+              <h5>{props.description}</h5>
+            )}
+          </Modal.Body>
           <Modal.Footer>
             <button
               onClick={closeModal}
@@ -50,11 +63,6 @@ const Todo = (props) => {
             </button>
 
             <button
-              // onClick={() => {
-              //   closeModal();
-              //   //props.onDelete(props.id);
-              //   //console.log("delete from modal: " + props.id);
-              // }}
               onClick={onDelete}
               className="btn btn-warning"
               style={{ marginLeft: "auto" }}
