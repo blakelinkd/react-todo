@@ -56,7 +56,7 @@ function App() {
             console.log(todoItems);
           }}
         >
-          <div className="mt-5 form-control input-group mb-3 fixed-middle w-25 mx-auto shadow p-3 mb-5 bg-body rounded">
+          <div className="mt-5 form-control input-group mb-3 fixed-middle w-80 mx-auto shadow p-3 mb-5 bg-body rounded">
             <div className="input-group-prepend">
               <button
                 type="button"
