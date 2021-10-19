@@ -4,10 +4,7 @@ import "./App.css";
 function App() {
   const tasks = [
     {
-      id: 1,
-      title: "Click on me!",
-      description: "I like to fart",
-      incomplete: true,
+      
     },
   ];
 
