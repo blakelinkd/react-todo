@@ -46,7 +46,7 @@ function App() {
               {
                 id: todoItems.length + 1,
                 title: text,
-                description: "",
+                description: description,
                 incomplete: true,
               },
             ]);
