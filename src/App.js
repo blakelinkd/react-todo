@@ -9,7 +9,7 @@ function App() {
   ];
 
   const [todoItems, setTodoItems] = useState(tasks);
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
   const [text, setText] = useState("");
 
   const handleDeleteTask = (id) => {
@@ -31,7 +31,7 @@ function App() {
                   title={task.title}
                   description={task.description}
                   onDelete={handleDeleteTask}
-                  setDescription={setDescription}
+                  // setDescription={setDescription}
                 />
               )
           )}
@@ -46,7 +46,7 @@ function App() {
               {
                 id: todoItems.length + 1,
                 title: text,
-                description: description,
+                description: "",
                 incomplete: true,
               },
             ]);
