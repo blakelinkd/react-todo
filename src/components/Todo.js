@@ -2,25 +2,22 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 const Todo = (props) => {
   const [isModalOpen, setModalOpen] = useState(false);
-
+  const [text, setText] = useState(props.text)
   const openModal = () => {
-    console.log("open model clicked");
     setModalOpen(true);
   };
   const closeModal = (id) => {
     setModalOpen(false);
-    console.debug("close model on: " + id);
   };
-  
+
   const onExit = () => {
     setModalOpen(false);
   };
   const onDelete = () => {
     props.onDelete(props.id);
     setModalOpen(false);
-    console.debug("close model on: " + props.id);
   };
-  const [text, setText] = useState("");
+
 
   return (
     <div>
@@ -34,21 +31,21 @@ const Todo = (props) => {
       {isModalOpen && (
         <Modal show={isModalOpen} onHide={onExit}>
           <Modal.Header>
-            <h4>{props.title}</h4>
+            <p className="fs-3 fw-bold">{props.title}</p>
           </Modal.Header>
           <Modal.Body>
-            {props.description === "" ? (
+            {!(text) ? (
               <input
                 type="text"
                 className="form-control"
                 placeholder="Today I need to..."
                 aria-label=""
                 aria-describedby="basic-addon1"
-                onChange={(e) => setText(e.target.value)}
-                value={text}
+                onBlur={(e) => setText(e.target.value)}
+                defaultValue={ text }
               />
             ) : (
-              <h5>{props.description}</h5>
+              <p className="fst-italic fs-2">{text}</p>
             )}
           </Modal.Body>
           <Modal.Footer>

@@ -4,9 +4,18 @@ import "./App.css";
 function App() {
   const tasks = [
     {
-      
+      id: 0,
+      title: "Extract Todo Form",
+      text: "Move the todo form into it's own component.",
+      incomplete: true      
     },
-  ];
+    {
+      id: 1,
+        title: "allow input like: [this is the task I'll do]:[this is the description of the task.",
+        text: "Allow the user to define the task and describe the task in the same line",
+        incomplete: true     
+    }
+    ];
 
   const [todoItems, setTodoItems] = useState(tasks);
   const [text, setText] = useState("");
@@ -28,7 +37,7 @@ function App() {
                 <Todo
                   id={task.id}
                   title={task.title}
-                  description={task.description}
+                  text={task.text}
                   onDelete={handleDeleteTask}
                 />
               )
@@ -50,6 +59,7 @@ function App() {
             ]);
             console.log(todoItems);
           }}
+          
         >
           <div className="mt-5 form-control input-group mb-3 fixed-middle w-80 mx-auto shadow p-3 mb-5 bg-body rounded">
             <div className="input-group-prepend">
@@ -62,7 +72,7 @@ function App() {
                     {
                       id: todoItems.length + 1,
                       title: text,
-                      description: "",
+                      text: "",
                       incomplete: true,
                     },
                   ]);
@@ -80,6 +90,7 @@ function App() {
               aria-describedby="basic-addon1"
               value={text}
               onChange={(e) => setText(e.target.value)}
+              required
             />
           </div>
         </form>
