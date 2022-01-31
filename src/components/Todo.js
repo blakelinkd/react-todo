@@ -3,9 +3,6 @@ import Modal from "react-bootstrap/Modal";
 const Todo = (props) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const setDescription = (arg) => {
-    props.setDescription(arg);
-  };
   const openModal = () => {
     console.log("open model clicked");
     setModalOpen(true);
@@ -14,6 +11,7 @@ const Todo = (props) => {
     setModalOpen(false);
     console.debug("close model on: " + id);
   };
+  
   const onExit = () => {
     setModalOpen(false);
   };
